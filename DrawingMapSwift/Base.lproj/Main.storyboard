@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DrawingMapSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKx-Xf-2J6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iL6-Hv-fLE">
+                                        <rect key="frame" x="314" y="15" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="didTouchUpInsideDrawButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j0H-mT-iDK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.47696412840000002" blue="0.35326165869999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="iL6-Hv-fLE" secondAttribute="bottom" constant="16" id="0rA-c8-Oiw"/>
+                                    <constraint firstAttribute="height" constant="61" id="MQN-Pi-g33"/>
+                                    <constraint firstAttribute="trailing" secondItem="iL6-Hv-fLE" secondAttribute="trailing" constant="15" id="Z9U-Zl-j1O"/>
+                                    <constraint firstItem="iL6-Hv-fLE" firstAttribute="top" secondItem="bKx-Xf-2J6" secondAttribute="top" constant="15" id="jHP-tH-y96"/>
+                                </constraints>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YI8-Ui-e1G">
+                                <rect key="frame" x="0.0" y="62" width="375" height="605"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YI8-Ui-e1G" firstAttribute="top" secondItem="bKx-Xf-2J6" secondAttribute="bottom" constant="1" id="64M-bb-8DJ"/>
+                            <constraint firstItem="bKx-Xf-2J6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="9mO-uB-d4F"/>
+                            <constraint firstItem="YI8-Ui-e1G" firstAttribute="trailing" secondItem="bKx-Xf-2J6" secondAttribute="trailing" id="RQ7-MG-crb"/>
+                            <constraint firstItem="bKx-Xf-2J6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Xxy-KH-2b8"/>
+                            <constraint firstItem="YI8-Ui-e1G" firstAttribute="leading" secondItem="bKx-Xf-2J6" secondAttribute="leading" id="gNm-Jq-RUD"/>
+                            <constraint firstItem="YI8-Ui-e1G" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="oKg-qV-Dyt"/>
+                            <constraint firstAttribute="trailing" secondItem="bKx-Xf-2J6" secondAttribute="trailing" id="vG2-gC-pWw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="drawPolygonButton" destination="iL6-Hv-fLE" id="bzl-Xq-KLf"/>
+                        <outlet property="mapView" destination="YI8-Ui-e1G" id="pc3-NY-tZz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+        </scene>
+    </scenes>
+</document>
