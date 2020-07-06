@@ -47,24 +47,9 @@ class ViewController: UIViewController ,MKMapViewDelegate ,CLLocationManagerDele
     @IBAction func didTouchUpInsideDrawButton(_ sender: Any) {
         if self.isDrawingPolygon == false {
             self.isDrawingPolygon = true
-            self.drawPolygonButton.setTitle("done", for: .normal)
             self.coordinates.removeAll()
-            self.view.addSubview(self.canvasView)
             self.mapView.removeOverlays(self.mapView.overlays)
-        }
-        else {
-            let numberOfPoints = self.coordinates.count
-            if numberOfPoints > 2 {
-                var points = [CLLocationCoordinate2D](repeating: CLLocationCoordinate2D(), count: numberOfPoints)
-                for i in 0..<numberOfPoints {
-                    points[i] = self.coordinates[i]
-                }
-                self.mapView.add(MKPolygon(coordinates: points, count: numberOfPoints))
-            }
-            self.isDrawingPolygon = false
-            self.drawPolygonButton.setTitle("draw", for: .normal)
-            self.canvasView.image = nil
-            self.canvasView.removeFromSuperview()
+            self.view.addSubview(self.canvasView)
         }
         print(coordinates);
     }
@@ -73,14 +58,12 @@ class ViewController: UIViewController ,MKMapViewDelegate ,CLLocationManagerDele
         let location = touch.location(in: self.mapView)
         let coordinate = self.mapView.convert(location, toCoordinateFrom: mapView)
         self.coordinates.append(NSValue.init(mkCoordinate: coordinate) as CLLocationCoordinate2D)
-
     }
     
     func touchesMoved(_ touch: UITouch) {
         let location = touch.location(in: self.mapView)
         let coordinate = self.mapView.convert(location, toCoordinateFrom: mapView)
         self.coordinates.append(NSValue.init(mkCoordinate: coordinate) as CLLocationCoordinate2D)
-
     }
     
     func touchesEnded(_ touch: UITouch) {
@@ -88,7 +71,17 @@ class ViewController: UIViewController ,MKMapViewDelegate ,CLLocationManagerDele
         let coordinate = self.mapView.convert(location, toCoordinateFrom: mapView)
         self.coordinates.append(NSValue.init(mkCoordinate: coordinate) as CLLocationCoordinate2D)
         
-        didTouchUpInsideDrawButton(Any.self);
+        let numberOfPoints = self.coordinates.count
+        if numberOfPoints > 2 {
+            var points = [CLLocationCoordinate2D](repeating: CLLocationCoordinate2D(), count: numberOfPoints)
+            for i in 0..<numberOfPoints {
+                points[i] = self.coordinates[i]
+            }
+            self.mapView.add(MKPolygon(coordinates: points, count: numberOfPoints))
+        }
+        self.isDrawingPolygon = false
+        self.canvasView.image = nil
+        self.canvasView.removeFromSuperview()
         
     }
     
